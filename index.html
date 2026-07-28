@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نتيجة الثانوية العامة 2026 - استعلام فوري بالاسم ورقم الجلوس</title>
+<meta name="description" content="استعلم عن نتيجة الثانوية العامة برقم الجلوس أو بالاسم فورًا">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;800;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+
+<!--
+=====================================================================
+دليل تركيب إعلانات Adsterra  (اقرأ هذا قبل النشر)
+=====================================================================
+في هذا الملف 25 "مكان إعلان" جاهز، كل واحد منها عبارة عن <div> بكلاس
+ad-slot ومعرف id مميز (زي ad-slot-01 ، ad-slot-02 ... إلخ).
+داخل كل واحد فيه تعليق HTML يقول لك مكانه ومقاسه المقترح.
+
+لتفعيل إعلانات Adsterra الحقيقية:
+1. سجّل دخول على لوحة تحكم Adsterra وأنشئ "Ad Zone" لكل مكان
+   (Banner 728x90 - Banner 300x250 - Native Banner - Social Bar - إلخ)
+2. Adsterra هيديك كود عبارة عن <script> أو <iframe>
+3. الصق الكود مباشرة جوه الـ div المطلوب بدل التعليق
+   (أو جوه وسم <head> لو الكود من نوع Social Bar / Popunder / Push،
+    لأن دول مش محتاجين مكان ظاهر في الصفحة)
+
+ملحوظة مهمة: 25 إعلان في صفحة واحدة رقم كبير جدًا، وده هيأثر على:
+- سرعة تحميل الصفحة (تجربة المستخدم)
+- شروط Adsterra نفسها بخصوص عدد الوحدات الإعلانية المسموح بها لكل صفحة
+  (راجع سياسة الشبكة قبل التفعيل الكامل)
+- تصنيف جوجل/المتصفحات للصفحة كصفحة "مزدحمة بالإعلانات"
+لو حابب نقلل العدد لتجربة استخدام أفضل، قوللي وهعدل التوزيع.
+=====================================================================
+-->
+
+<style>
+  :root{
+    --ink:#0d2b1f;
+    --green-deep:#0b4d36;
+    --green:#0f6e4f;
+    --green-bright:#17a06b;
+    --gold:#c9962e;
+    --gold-light:#f0d99a;
+    --paper:#f7f4ec;
+    --paper-2:#efe9d8;
+    --line:#d8cfb5;
+    --red:#a3312a;
+    --white:#ffffff;
+    --ad-bg:#eee7d2;
+    --ad-border:#c9b98f;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Tajawal',sans-serif;
+    line-height:1.6;
+  }
+  h1,h2,h3,.brand,.stamp-text{font-family:'Cairo',sans-serif;}
+
+  /* ===== top strip ===== */
+  .top-strip{
+    background:var(--ink);
+    color:var(--gold-light);
+    font-size:12.5px;
+    text-align:center;
+    padding:5px 10px;
+    letter-spacing:.3px;
+  }
+
+  /* ===== header ===== */
+  header{
+    background:linear-gradient(160deg,var(--green-deep) 0%, var(--green) 55%, var(--green-bright) 100%);
+    color:var(--white);
+    padding:22px 16px 30px;
+    position:relative;
+    overflow:hidden;
+  }
+  header::after{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(circle at 85% -10%, rgba(201,150,46,.35), transparent 45%),
+      repeating-linear-gradient(135deg, rgba(255,255,255,.035) 0 2px, transparent 2px 22px);
+    pointer-events:none;
+  }
+  .header-inner{max-width:1180px;margin:0 auto;position:relative;z-index:1;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .stamp{
+    width:52px;height:52px;border-radius:50%;
+    border:2.5px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:900;font-size:20px;color:var(--gold-light);
+    background:rgba(0,0,0,.15);
+    flex-shrink:0;
+  }
+  .brand-text .en{font-size:11px;letter-spacing:2px;color:var(--gold-light);opacity:.85;}
+  .brand-text h1{margin:2px 0 0;font-size:22px;font-weight:800;}
+  .header-badge{
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.25);
+    padding:8px 16px;border-radius:999px;font-size:13px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .header-badge b{color:var(--gold-light);}
+
+  .hero-title{max-width:1180px;margin:26px auto 0;position:relative;z-index:1;text-align:center;}
+  .hero-title h2{font-size:clamp(22px,4vw,34px);margin:0 0 6px;font-weight:900;}
+  .hero-title p{margin:0;color:var(--gold-light);font-size:14.5px;}
+
+  /* ===== layout with sidebars ===== */
+  .page-grid{
+    max-width:1440px;margin:0 auto;
+    display:grid;
+    grid-template-columns:180px minmax(0,1fr) 180px;
+    gap:18px;
+    padding:22px 14px 40px;
+    align-items:start;
+  }
+  .side-rail{position:sticky; top:14px; display:flex; flex-direction:column; gap:14px;}
+  .content-col{min-width:0;}
+
+  /* ===== ad slot styling ===== */
+  .ad-slot{
+    background:var(--ad-bg);
+    border:1.5px dashed var(--ad-border);
+    border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+    color:#8a7a4d;font-size:12px;text-align:center;
+    position:relative;overflow:hidden;
+    padding:6px;
+  }
+  .ad-slot::before{
+    content:attr(data-label);
+    position:absolute; top:4px; right:6px;
+    font-size:9.5px; letter-spacing:.5px; color:#a5936a; font-weight:700;
+    background:rgba(255,255,255,.6); padding:1px 6px; border-radius:6px;
+  }
+  .ad-slot .ad-fallback{margin-top:10px; opacity:.75; font-family:'Tajawal';}
+  .ad-300x250{width:100%;max-width:300px;height:250px;margin:0 auto;}
+  .ad-728x90{width:100%;max-width:728px;height:90px;margin:0 auto;}
+  .ad-native{width:100%;min-height:110px;}
+  .ad-320x100{width:100%;max-width:320px;height:100px;margin:0 auto;}
+  .ad-grid-item{height:120px;}
+
+  /* ===== search card ===== */
+  .search-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:26px;
+    box-shadow:0 10px 30px -18px rgba(11,77,54,.35);
+    margin-bottom:18px;
+  }
+  .tabs{display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap;}
+  .tab-btn{
+    flex:1; min-width:140px;
+    padding:11px 14px; border-radius:10px; border:1.5px solid var(--line);
+    background:var(--paper); color:var(--ink); font-family:'Cairo'; font-weight:700; font-size:14.5px;
+    cursor:pointer; transition:.15s;
+  }
+  .tab-btn.active{background:var(--green); color:#fff; border-color:var(--green);}
+  .search-row{display:flex; gap:10px; flex-wrap:wrap;}
+  #searchInput{
+    flex:1; min-width:220px;
+    padding:14px 16px; border-radius:10px; border:1.5px solid var(--line);
+    font-size:16px; font-family:'Tajawal'; background:var(--paper);
+  }
+  #searchInput:focus{outline:2px solid var(--green-bright); outline-offset:1px; background:#fff;}
+  #searchBtn{
+    padding:14px 26px; border-radius:10px; border:none;
+    background:var(--gold); color:var(--ink); font-family:'Cairo'; font-weight:800; font-size:15.5px;
+    cursor:pointer; transition:.15s;
+  }
+  #searchBtn:hover{background:#b98726;}
+  .hint{font-size:12.5px; color:#78705a; margin-top:10px;}
+
+  /* ===== results ===== */
+  .results-wrap{min-height:60px;}
+  .msg-box{
+    text-align:center; padding:40px 20px; color:#7a705a; font-size:15px;
+  }
+  .msg-box b{display:block; font-family:'Cairo'; font-size:17px; color:var(--ink); margin-bottom:6px;}
+
+  .result-card{
+    background:var(--white); border:1px solid var(--line); border-radius:14px;
+    padding:20px 22px; margin-bottom:14px;
+    display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;
+    border-inline-start:6px solid var(--green);
+  }
+  .result-card.fail{border-inline-start-color:var(--red);}
+  .result-card.round2{border-inline-start-color:var(--gold);}
+  .r-name{font-family:'Cairo'; font-weight:800; font-size:18px; margin:0 0 4px;}
+  .r-seat{font-size:13px; color:#7a705a;}
+  .r-stats{display:flex; gap:22px; align-items:center; flex-wrap:wrap;}
+  .r-stat{text-align:center;}
+  .r-stat .num{font-family:'Cairo'; font-weight:900; font-size:20px; color:var(--green-deep);}
+  .r-stat .lbl{font-size:11.5px; color:#8a7a5d;}
+  .status-pill{
+    padding:7px 16px; border-radius:999px; font-family:'Cairo'; font-weight:800; font-size:13px;
+    background:#e5f5ec; color:var(--green-deep); white-space:nowrap;
+  }
+  .result-card.fail .status-pill{background:#f8e6e4; color:var(--red);}
+  .result-card.round2 .status-pill{background:#fbf0da; color:#8a6414;}
+
+  .results-count{font-size:13.5px; color:#7a705a; margin:0 0 12px;}
+
+  /* ===== info sections ===== */
+  .info-section{
+    background:var(--white); border:1px solid var(--line); border-radius:14px;
+    padding:22px; margin-top:20px;
+  }
+  .info-section h3{margin:0 0 10px; font-size:17px;}
+  .info-section p{margin:0; font-size:14px; color:#4c4636;}
+
+  /* ===== footer ad wall ===== */
+  .footer-ads{
+    max-width:1180px; margin:26px auto 0; padding:0 14px;
+  }
+  .footer-ads h4{
+    font-family:'Cairo'; font-size:13px; color:#8a7a5d; text-align:center;
+    margin:0 0 12px; letter-spacing:.5px;
+  }
+  .ad-grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:10px;
+  }
+
+  footer{
+    background:var(--ink); color:#cdd8d1; text-align:center;
+    padding:26px 16px; font-size:13px; margin-top:30px;
+  }
+  footer .en{color:#8fae9d; font-size:11.5px;}
+
+  /* mobile sticky bottom ad */
+  .sticky-bottom-ad{
+    position:fixed; bottom:0; left:0; right:0; z-index:50;
+    background:var(--ad-bg); border-top:1.5px dashed var(--ad-border);
+    display:none; align-items:center; justify-content:center;
+    height:64px;
+  }
+
+  @media (max-width:980px){
+    .page-grid{grid-template-columns:1fr;}
+    .side-rail{display:none;}
+    .sticky-bottom-ad{display:flex;}
+    body{padding-bottom:70px;}
+  }
+  @media (max-width:560px){
+    .r-stats{width:100%; justify-content:space-between;}
+    .result-card{flex-direction:column; align-items:stretch;}
+    .status-pill{align-self:flex-start;}
+  }
+  :focus-visible{outline:2.5px solid var(--green-bright); outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<div class="top-strip">نتيجة الثانوية العامة 2026 — جمهورية مصر العربية — نتيجة معتمدة من الملفات الرسمية المرفوعة</div>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <div class="stamp">ث ع</div>
+      <div class="brand-text">
+        <div class="en">EGYPTIAN GENERAL SECONDARY</div>
+        <h1>بوابة نتيجة الثانوية العامة</h1>
+      </div>
+    </div>
+    <div class="header-badge">📋 عدد الطلاب المسجلين: <b id="totalCount">—</b></div>
+  </div>
+  <div class="hero-title">
+    <h2>استعلم عن نتيجتك في ثوانٍ</h2>
+    <p>ادخل رقم الجلوس أو اسم الطالب للحصول على المجموع والنسبة وحالة النجاح</p>
+  </div>
+</header>
+
+<div class="page-grid">
+
+  <!-- ===== LEFT SIDEBAR (desktop only) ===== -->
+  <aside class="side-rail">
+    <!-- AD SLOT 01 -->
+    <div class="ad-slot ad-300x250" id="ad-slot-01" data-label="إعلان">
+      <script>
+        atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
+      </script>
+      <script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script>
+    </div>
+    <!-- AD SLOT 02 -->
+    <div class="ad-slot ad-300x250" id="ad-slot-02" data-label="إعلان">
+      <script>
+        atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
+      </script>
+      <script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script>
+    </div>
+    <!-- AD SLOT 03 -->
+    <div class="ad-slot ad-300x250" id="ad-slot-03" data-label="إعلان">
+      <script>
+        atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
+      </script>
+      <script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script>
+    </div>
+    <!-- AD SLOT 04 -->
+    <div class="ad-slot ad-300x250" id="ad-slot-04" data-label="إعلان">
+      <script>
+        atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
+      </script>
+      <script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script>
+    </div>
+  </aside>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="content-col">
+
+    <!-- AD SLOT 05 : leaderboard below header -->
+    <div class="ad-slot ad-728x90" id="ad-slot-05" data-label="إعلان" style="margin-bottom:18px;">
+      <script>
+        atOptions = { 'key' : 'e9d0e8e760df2ae6ecada0cf23296c33', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+      </script>
+      <script src="https://www.highperformanceformat.com/e9d0e8e760df2ae6ecada0cf23296c33/invoke.js"></script>
+    </div>
+
+    <div class="search-card">
+      <div class="tabs">
+        <button class="tab-btn active" data-mode="seat" onclick="setMode('seat')">🎫 البحث برقم الجلوس</button>
+        <button class="tab-btn" data-mode="name" onclick="setMode('name')">🔤 البحث بالاسم</button>
+      </div>
+      <div class="search-row">
+        <input id="searchInput" type="text" inputmode="numeric" placeholder="اكتب رقم الجلوس... مثال: 2296916" autocomplete="off">
+        <button id="searchBtn" onclick="doSearch()">استعلام</button>
+      </div>
+      <div class="hint" id="hintText">اكتب رقم الجلوس كاملاً واضغط "استعلام"، أو Enter.</div>
+    </div>
+
+    <!-- AD SLOT 06 : right after search box -->
+    <div class="ad-slot ad-native" id="ad-slot-06" data-label="إعلان مدمج">
+      <script async="async" data-cfasync="false" src="https://pl30550419.effectivecpmnetwork.com/df1c114d60ccf6d85c05cd93fba321a2/invoke.js"></script>
+      <div id="container-df1c114d60ccf6d85c05cd93fba321a2"></div>
+    </div>
+
+    <div class="results-wrap" id="resultsWrap">
+      <div class="msg-box">
+        <b>ابدأ الاستعلام</b>
+        النتائج هتظهر هنا فور كتابة رقم الجلوس أو الاسم
+      </div>
+    </div>
+
+    <!-- AD SLOT 07 : after results -->
+    <div class="ad-slot ad-728x90" id="ad-slot-07" data-label="إعلان" style="margin-top:18px;">
+      <script>
+        atOptions = { 'key' : 'e9d0e8e760df2ae6ecada0cf23296c33', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+      </script>
+      <script src="https://www.highperformanceformat.com/e9d0e8e760df2ae6ecada0cf23296c33/invoke.js"></script>
+    </div>
+
+    <div class="info-section">
+      <h3>📌 ملاحظات هامة</h3>
+      <p>
+        النتيجة المعروضة في هذه الصفحة مأخوذة من الملفات الرسمية التي تم رفعها على الموقع، وتشمل: رقم الجلوس، اسم الطالب،
+        المجموع الكلي، النسبة المئوية، وحالة الطالب (ناجح / دور ثانٍ / راسب / غياب كلي). في حالة وجود أي استفسار بخصوص دقة
+        البيانات يُرجى الرجوع إلى الموقع الرسمي لوزارة التربية والتعليم.
+      </p>
+    </div>
+
+  </main>
+
+  <!-- ===== RIGHT SIDEBAR (desktop only) ===== -->
+  <aside class="side-rail">
+    <!-- AD SLOT 08 -->
+    <div class="ad-slot ad-300x250" id="ad-slot-08" data-label="إعلان">
+      <script>
+        atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
+      </script>
+      <script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script>
+    </div>
+    <!-- AD SLOT 09 -->
+    <div class="ad-slot ad-300x250" id="ad-slot-09" data-label="إعلان">
+      <script>
+        atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
+      </script>
+      <script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script>
+    </div>
+    <!-- AD SLOT 10 -->
+    <div class="ad-slot ad-300x250" id="ad-slot-10" data-label="إعلان">
+      <script>
+        atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
+      </script>
+      <script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script>
+    </div>
+    <!-- AD SLOT 11 -->
+    <div class="ad-slot ad-300x250" id="ad-slot-11" data-label="إعلان">
+      <script>
+        atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
+      </script>
+      <script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script>
+    </div>
+  </aside>
+
+</div>
+
+<!-- ===== FOOTER AD WALL (slots 12-24 = 13 units) plus slot 25 = final footer banner ===== -->
+<div class="footer-ads">
+  <h4>— إعلانات —</h4>
+  <div class="ad-grid">
+    <div class="ad-slot ad-grid-item" id="ad-slot-12" data-label="إعلان"><script>
+atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+</script>
+<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+    <div class="ad-slot ad-grid-item" id="ad-slot-13" data-label="إعلان"><script>
+atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+</script>
+<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+    <div class="ad-slot ad-grid-item" id="ad-slot-14" data-label="إعلان"><script>
+atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+</script>
+<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+    <div class="ad-slot ad-grid-item" id="ad-slot-15" data-label="إعلان"><script>
+atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+</script>
+<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+    <div class="ad-slot ad-grid-item" id="ad-slot-16" data-label="إعلان"><script>
+atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+</script>
+<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+    <div class="ad-slot ad-grid-item" id="ad-slot-17" data-label="إعلان"><script>
+atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+</script>
+<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+    <div class="ad-slot ad-grid-item" id="ad-slot-18" data-label="إعلان"><script>
+atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+</script>
+<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+    <div class="ad-slot ad-grid-item" id="ad-slot-19" data-label="إعلان"><script>
+atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+</script>
+<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+    <div class="ad-slot ad-grid-item" id="ad-slot-20" data-label="إعلان"><script>
+atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+</script>
+<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+    <div class="ad-slot ad-grid-item" id="ad-slot-21" data-label="إعلان"><script>
+atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+</script>
+<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+    <div class="ad-slot ad-grid-item" id="ad-slot-22" data-label="إعلان"><script>
+atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+</script>
+<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+    <div class="ad-slot ad-grid-item" id="ad-slot-23" data-label="إعلان"><script>
+atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+</script>
+<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+    <div class="ad-slot ad-grid-item" id="ad-slot-24" data-label="إعلان"><script>
+atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+</script>
+<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+  </div>
+</div>
+
+<!-- AD SLOT 25 : final wide banner before footer -->
+<div class="footer-ads" style="margin-top:14px;">
+  <div class="ad-slot ad-728x90" id="ad-slot-25" data-label="إعلان">
+    <script>
+        atOptions = { 'key' : 'e9d0e8e760df2ae6ecada0cf23296c33', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+      </script>
+      <script src="https://www.highperformanceformat.com/e9d0e8e760df2ae6ecada0cf23296c33/invoke.js"></script>
+  </div>
+</div>
+
+<footer>
+  <div>بوابة نتيجة الثانوية العامة — بيانات تجريبية من الملفات المرفوعة</div>
+  <div class="en">Result lookup portal · Data source: uploaded official result files</div>
+</footer>
+
+<!-- ===== MOBILE STICKY BOTTOM AD (counts as part of the 25 rotation on mobile) ===== -->
+<div class="sticky-bottom-ad" id="ad-slot-mobile-sticky" data-label="إعلان ثابت">
+  <script>
+    atOptions = { 'key' : 'e380d76fe3ce6ca088ab27fc9b0c9b25', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
+  </script>
+  <script src="https://www.highperformanceformat.com/e380d76fe3ce6ca088ab27fc9b0c9b25/invoke.js"></script>
+</div>
+
+<script>
+/* =========================================================
+   بيانات الطلاب (مصدرها ملفات الإكسل التي رفعها المستخدم)
+   ========================================================= */
+let STUDENTS = [];
+let dataReady = false;
+const bySeat = {};
+
+async function loadStudents(){
+  document.getElementById('totalCount').textContent = 'جارٍ التحميل...';
+  try{
+    const res = await fetch('students.json');
+    STUDENTS = await res.json();
+    STUDENTS.forEach(s => { bySeat[s.seat] = s; });
+    dataReady = true;
+    document.getElementById('totalCount').textContent = STUDENTS.length.toLocaleString('ar-EG');
+  }catch(err){
+    document.getElementById('totalCount').textContent = 'تعذر التحميل';
+    document.getElementById('resultsWrap').innerHTML = `<div class="msg-box"><b>تعذر تحميل بيانات النتيجة</b>تأكد من وجود ملف students.json بجانب صفحة index.html على نفس الخادم، ثم أعد تحميل الصفحة.</div>`;
+  }
+}
+loadStudents();
+
+let mode = 'seat';
+function setMode(m){
+  mode = m;
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active', b.dataset.mode===m));
+  const input = document.getElementById('searchInput');
+  const hint = document.getElementById('hintText');
+  if(m==='seat'){
+    input.placeholder = 'اكتب رقم الجلوس... مثال: 2296916';
+    input.inputMode = 'numeric';
+    hint.textContent = 'اكتب رقم الجلوس كاملاً واضغط "استعلام"، أو Enter.';
+  } else {
+    input.placeholder = 'اكتب اسم الطالب... مثال: احمد محمد';
+    input.inputMode = 'text';
+    hint.textContent = 'اكتب اسمين على الأقل من اسم الطالب لتحسين نتائج البحث.';
+  }
+  input.value='';
+  document.getElementById('resultsWrap').innerHTML = `<div class="msg-box"><b>ابدأ الاستعلام</b>النتائج هتظهر هنا فور كتابة رقم الجلوس أو الاسم</div>`;
+}
+
+// تطبيع النص العربي لتحسين نتائج البحث بالاسم (إزالة التشكيل وتوحيد الألف والياء والهاء)
+function normalizeArabic(str){
+  return str
+    .replace(/[\u064B-\u0652]/g,'')
+    .replace(/[إأآا]/g,'ا')
+    .replace(/ى/g,'ي')
+    .replace(/ة/g,'ه')
+    .replace(/ؤ/g,'و')
+    .replace(/ئ/g,'ي')
+    .replace(/\s+/g,' ')
+    .trim()
+    .toLowerCase();
+}
+
+function statusClass(status){
+  if(status.includes('راسب') || status.includes('غياب')) return 'fail';
+  if(status.includes('دور ثان')) return 'round2';
+  return '';
+}
+
+function renderResults(list, queryWasSeat){
+  const wrap = document.getElementById('resultsWrap');
+  if(list.length === 0){
+    wrap.innerHTML = `<div class="msg-box"><b>لا توجد نتيجة مطابقة</b>تأكد من رقم الجلوس أو من كتابة الاسم بشكل صحيح</div>`;
+    return;
+  }
+  let html = '';
+  if(!queryWasSeat){
+    html += `<p class="results-count">تم العثور على ${list.length.toLocaleString('ar-EG')} نتيجة مطابقة</p>`;
+  }
+  list.slice(0, 60).forEach((s, idx) => {
+    html += `
+      <div class="result-card ${statusClass(s.status)}">
+        <div>
+          <p class="r-name">${s.name}</p>
+          <p class="r-seat">رقم الجلوس: ${s.seat}</p>
+        </div>
+        <div class="r-stats">
+          <div class="r-stat"><div class="num">${s.total}</div><div class="lbl">المجموع الكلي</div></div>
+          <div class="r-stat"><div class="num">${s.pct.toFixed(2)}%</div><div class="lbl">النسبة</div></div>
+          <div class="status-pill">${s.status}</div>
+        </div>
+      </div>`;
+  });
+  if(list.length > 60){
+    html += `<p class="hint">تم عرض أول 60 نتيجة فقط. حاول تضييق نطاق البحث بكتابة اسم أكثر تفصيلاً.</p>`;
+  }
+  wrap.innerHTML = html;
+}
+
+function doSearch(){
+  const raw = document.getElementById('searchInput').value.trim();
+  const wrap = document.getElementById('resultsWrap');
+  if(!dataReady){
+    wrap.innerHTML = `<div class="msg-box"><b>البيانات لا تزال قيد التحميل</b>من فضلك انتظر لحظات ثم أعد المحاولة.</div>`;
+    return;
+  }
+  if(!raw){
+    wrap.innerHTML = `<div class="msg-box"><b>من فضلك اكتب قيمة للبحث</b></div>`;
+    return;
+  }
+  if(mode === 'seat'){
+    const seat = raw.replace(/\D/g,'');
+    const found = bySeat[seat];
+    renderResults(found ? [found] : [], true);
+  } else {
+    const q = normalizeArabic(raw);
+    const terms = q.split(' ').filter(Boolean);
+    const matches = STUDENTS.filter(s => {
+      const nName = normalizeArabic(s.name);
+      return terms.every(t => nName.includes(t));
+    });
+    renderResults(matches, false);
+  }
+}
+
+document.getElementById('searchInput').addEventListener('keydown', e=>{
+  if(e.key === 'Enter') doSearch();
+});
+</script>
+<!-- إعلانات على مستوى الموقع بالكامل (تعمل تلقائيًا بدون مكان ظاهر في الصفحة) -->
+<!-- Popunder -->
+<script src="https://pl30550420.effectivecpmnetwork.com/2c/96/76/2c9676200a3ab3064b2e211c578fe189.js"></script>
+<!-- Social Bar -->
+<script src="https://pl30550421.effectivecpmnetwork.com/be/be/f4/bebef430457a5f20cd12b2c5fc3a7f20.js"></script>
+
+</body>
+</html>
