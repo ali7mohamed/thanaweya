@@ -1303,6 +1303,24 @@ function normalizeArabic(str){
     .toLowerCase();
 }
 
+// حساب درجة "قرب" الاسم من نص البحث عشان أقرب الأسماء تظهر الأول
+function nameMatchScore(name, normalizedQuery){
+  const nName = normalizeArabic(name);
+  if(nName === normalizedQuery) return 1000; // تطابق تام
+  if(nName.startsWith(normalizedQuery)) return 900 - (nName.length - normalizedQuery.length);
+  const idx = nName.indexOf(normalizedQuery);
+  if(idx !== -1) return 700 - idx - (nName.length - normalizedQuery.length) * 0.1; // الاسم كله موجود متتالي جوه الاسم
+  // مطابقة على مستوى الكلمات (كل كلمات البحث موجودة بس مش بالضرورة متتالية)
+  const terms = normalizedQuery.split(' ').filter(Boolean);
+  let firstPos = Infinity;
+  terms.forEach(t=>{
+    const p = nName.indexOf(t);
+    if(p !== -1 && p < firstPos) firstPos = p;
+  });
+  const lengthPenalty = (nName.length - normalizedQuery.length) * 0.1;
+  return 400 - (firstPos === Infinity ? 0 : firstPos) - lengthPenalty;
+}
+
 function statusClass(status){
   if(status.includes('راسب') || status.includes('غياب')) return 'fail';
   if(status.includes('دور ثان')) return 'round2';
@@ -1463,12 +1481,15 @@ function renderColleges(){
       const minPct = r[0];
       const minTotal = Math.round(minPct / 100 * 320 * 2) / 2;
       const diff = total - minTotal;
-      // بيقترح بس الكليات/المعاهد اللي مجموع الطالب فعلاً مؤهل ليها (مساوي أو أعلى من حدها الأدنى)
-      const tier = diff >= 0 ? 'ok' : 'out';
+      let tier;
+      if(diff >= 0) tier = 'ok';
+      else if(diff >= -1.5) tier = 'possible';
+      else if(diff >= -5) tier = 'hard';
+      else tier = 'out';
       return { uni: r[1], col: r[2], minPct, minTotal, diff, tier };
     })
     .filter(r => r.tier !== 'out')
-    .sort((a,b) => b.minPct - a.minPct); // الأعلى حد أدنى الأول
+    .sort((a,b) => b.minPct - a.minPct);
 
   const counts = { all: rows.length, ok: 0, possible: 0, hard: 0 };
   rows.forEach(r => counts[r.tier]++);
@@ -1541,6 +1562,8 @@ function doSearch(){
       const nName = normalizeArabic(s.name);
       return terms.every(t => nName.includes(t));
     });
+    // ترتيب النتائج بحيث الأسماء الأقرب لنص البحث (تطابق تام، ثم بادئة، ثم مطابقة متتالية) تظهر أولاً
+    matches.sort((a,b) => nameMatchScore(b.name, q) - nameMatchScore(a.name, q));
     renderResults(matches, false);
   }
 }
