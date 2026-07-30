@@ -1279,6 +1279,14 @@ function backToSearch(){
   document.getElementById('searchInput').focus();
 }
 
+/* يبني اسم الكلية بصيغة "كلية X - جامعة Y" في سطر واحد بدل عرضهم منفصلين */
+function formatCollegeName(col, uni){
+  if(!uni) return col; // معاهد/كليات خاصة مالهاش جامعة تابعة
+  const alreadyPrefixed = /^(كلية|معهد)/.test(col.trim());
+  const withPrefix = alreadyPrefixed ? col : ('كلية ' + col);
+  return `${withPrefix} - ${uni}`;
+}
+
 function renderColleges(){
   const body = document.getElementById('collegesBody');
   if(!body || !currentStudent) return;
@@ -1332,8 +1340,8 @@ function renderColleges(){
             <div class="diff">الحد الأدنى</div>
           </div>
           <div class="college-info">
-            <p class="name">${r.col}</p>
-            <p class="uni">${r.uni ? r.uni + ' · ' : ''}${diffLabel}</p>
+            <p class="name">${formatCollegeName(r.col, r.uni)}</p>
+            <p class="uni">${diffLabel}</p>
           </div>
         </div>`;
     });
