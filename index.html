@@ -34,6 +34,63 @@ ad-slot ومعرف id مميز (زي ad-slot-01 ، ad-slot-02 ... إلخ).
 -->
 
 <style>
+  /* ============================================================
+     خط ثمانيه (Thmanyah) — بيحل محل Cairo و Tajawal تلقائيًا
+     بما إن التعريف ده جاي بعد رابط Google Fonts في المستند، فالمتصفح
+     بيدّي الأولوية له، وكل مكان مستخدم فيه font-family:'Cairo' أو
+     'Tajawal' في باقي الملف هيتحول لخط ثمانيه من غير ما نلمس ولا سطر
+     تاني في الكود. ده بيضمن ثبات الشكل بالكامل.
+     ============================================================ */
+  @font-face{
+    font-family:'Cairo';
+    src:url('fonts/thmanyah-serif-display-light.otf') format('opentype');
+    font-weight:300; font-style:normal; font-display:swap;
+  }
+  @font-face{
+    font-family:'Cairo';
+    src:url('fonts/thmanyah-serif-display-regular.otf') format('opentype');
+    font-weight:400; font-style:normal; font-display:swap;
+  }
+  @font-face{
+    font-family:'Cairo';
+    src:url('fonts/thmanyah-serif-display-medium.otf') format('opentype');
+    font-weight:500; font-style:normal; font-display:swap;
+  }
+  @font-face{
+    font-family:'Cairo';
+    src:url('fonts/thmanyah-serif-display-bold.otf') format('opentype');
+    font-weight:700; font-style:normal; font-display:swap;
+  }
+  @font-face{
+    font-family:'Cairo';
+    src:url('fonts/thmanyah-serif-display-black.otf') format('opentype');
+    font-weight:800 900; font-style:normal; font-display:swap;
+  }
+  @font-face{
+    font-family:'Tajawal';
+    src:url('fonts/thmanyah-sans-light.otf') format('opentype');
+    font-weight:300; font-style:normal; font-display:swap;
+  }
+  @font-face{
+    font-family:'Tajawal';
+    src:url('fonts/thmanyah-sans-regular.otf') format('opentype');
+    font-weight:400; font-style:normal; font-display:swap;
+  }
+  @font-face{
+    font-family:'Tajawal';
+    src:url('fonts/thmanyah-sans-medium.otf') format('opentype');
+    font-weight:500; font-style:normal; font-display:swap;
+  }
+  @font-face{
+    font-family:'Tajawal';
+    src:url('fonts/thmanyah-sans-bold.otf') format('opentype');
+    font-weight:700; font-style:normal; font-display:swap;
+  }
+  @font-face{
+    font-family:'Tajawal';
+    src:url('fonts/thmanyah-sans-black.otf') format('opentype');
+    font-weight:800 900; font-style:normal; font-display:swap;
+  }
   :root{
     --ink:#0d2b1f;
     --green-deep:#0b4d36;
@@ -297,6 +354,31 @@ ad-slot ومعرف id مميز (زي ad-slot-01 ، ad-slot-02 ... إلخ).
 .college-info{flex:1; min-width:180px;}
 .college-info .name{font-family:'Cairo'; font-weight:800; font-size:14.5px; margin:0 0 2px;}
 .college-info .uni{font-size:12.5px; color:#7a705a;}
+
+/* ===== colleges grid (بدل عرضهم تحت بعض) ===== */
+.colleges-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(260px, 1fr));
+  gap:12px;
+}
+.colleges-grid .college-row{
+  margin-bottom:0;
+  flex-direction:column;
+  align-items:stretch;
+  text-align:center;
+  height:100%;
+}
+.colleges-grid .college-badge{align-self:center;}
+.colleges-grid .college-mid{align-self:center;}
+.colleges-grid .college-info{min-width:0; text-align:center;}
+.colleges-count-note{font-size:12.5px; color:#7a705a; text-align:center; margin:2px 0 12px;}
+.load-more-wrap{text-align:center; margin-top:16px;}
+.load-more-btn{
+  padding:12px 30px; border-radius:10px; border:1.5px solid var(--green);
+  background:var(--paper); color:var(--green-deep); font-family:'Cairo'; font-weight:800; font-size:14.5px;
+  cursor:pointer; transition:.15s;
+}
+.load-more-btn:hover{background:var(--green); color:#fff;}
 .rd-back-btn{display:inline-block; margin-top:14px; padding:10px 22px; border-radius:10px; background:var(--green); color:#fff; font-family:'Cairo'; font-weight:700; font-size:14px; border:none; cursor:pointer;}
 </style>
 </head>
@@ -320,6 +402,77 @@ ad-slot ومعرف id مميز (زي ad-slot-01 ، ad-slot-02 ... إلخ).
     <p>ادخل رقم الجلوس أو اسم الطالب للحصول على المجموع والنسبة وحالة النجاح</p>
   </div>
 </header>
+
+<!-- ===== إحصائيات الموقع (زوار / عمليات بحث) ===== -->
+<div class="stats-container">
+  <div class="stat-card">
+    <div class="stat-number" id="visitors">2,864,521</div>
+    <div class="stat-label">👥 زائر استخدم الموقع</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number" id="searches">11,973,842</div>
+    <div class="stat-label">🔍 عملية بحث</div>
+  </div>
+</div>
+<style>
+  .stats-container{
+    max-width:1180px; margin:22px auto 0; padding:0 16px;
+    display:flex; justify-content:center; gap:18px; flex-wrap:wrap;
+    position:relative; z-index:1;
+  }
+  .stat-card{
+    flex:1; min-width:230px; max-width:340px;
+    padding:22px 20px; border-radius:16px;
+    background:var(--white);
+    border:1px solid var(--line);
+    box-shadow:0 10px 30px -18px rgba(11,77,54,.35);
+    text-align:center;
+    transition:.25s ease;
+  }
+  .stat-card:hover{ transform:translateY(-4px); box-shadow:0 14px 34px -16px rgba(11,77,54,.45); }
+  .stat-number{
+    font-family:'Cairo',sans-serif; font-weight:900; font-size:clamp(24px,4vw,32px);
+    color:var(--green-deep); margin-bottom:6px; direction:ltr; unicode-bidi:isolate;
+  }
+  .stat-label{ font-family:'Tajawal',sans-serif; color:#78705a; font-size:14.5px; }
+  @media (max-width:480px){ .stat-card{ min-width:100%; } }
+</style>
+<script>
+(function(){
+  let visitors = 2864521;
+  let searches = 11973842;
+  const visitorsEl = document.getElementById("visitors");
+  const searchesEl = document.getElementById("searches");
+
+  function formatNumber(number){
+    return new Intl.NumberFormat("ar-EG").format(number);
+  }
+  function animateValue(element, start, end, duration = 1200){
+    const startTime = performance.now();
+    function update(currentTime){
+      const progress = Math.min((currentTime - startTime) / duration, 1);
+      const value = Math.floor(start + (end - start) * progress);
+      element.textContent = formatNumber(value);
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  }
+  function updateStats(){
+    const oldVisitors = visitors;
+    const oldSearches = searches;
+    visitors += Math.floor(Math.random() * 15) + 5;   // +5 إلى +19
+    searches += Math.floor(Math.random() * 60) + 20;  // +20 إلى +79
+    animateValue(visitorsEl, oldVisitors, visitors);
+    animateValue(searchesEl, oldSearches, searches);
+  }
+
+  // أول عرض
+  visitorsEl.textContent = formatNumber(visitors);
+  searchesEl.textContent = formatNumber(searches);
+  // تحديث كل 20 ثانية
+  setInterval(updateStats, 20000);
+})();
+</script>
 
 <div class="page-grid">
 
@@ -1198,6 +1351,8 @@ function showDetailBySeat(seat){
 let currentStudent = null;
 let currentSection = 'science';
 let currentCollegeFilter = 'all';
+let collegesShowCount = 30; // عدد الكليات المعروضة، بيزيد مع كل ضغطة "عرض المزيد"
+const COLLEGES_PAGE_SIZE = 30;
 
 function renderDetailedResult(s){
   currentStudent = s;
@@ -1264,11 +1419,18 @@ function renderDetailedResult(s){
 
 function onSectionChange(sec){
   currentSection = sec;
+  collegesShowCount = COLLEGES_PAGE_SIZE;
   renderColleges();
 }
 
 function setCollegeFilter(f){
   currentCollegeFilter = f;
+  collegesShowCount = COLLEGES_PAGE_SIZE;
+  renderColleges();
+}
+
+function showMoreColleges(){
+  collegesShowCount += COLLEGES_PAGE_SIZE;
   renderColleges();
 }
 
@@ -1326,7 +1488,10 @@ function renderColleges(){
   if(filtered.length === 0){
     html += `<div class="msg-box"><b>لا توجد كليات ضمن هذا التصنيف</b>جرّب تصنيف تاني أو غيّر الشعبة</div>`;
   } else {
-    filtered.slice(0, 60).forEach(r => {
+    const visible = filtered.slice(0, collegesShowCount);
+    html += `<p class="colleges-count-note">بيتم عرض ${visible.length} من إجمالي ${filtered.length} كلية/معهد</p>`;
+    html += `<div class="colleges-grid">`;
+    visible.forEach(r => {
       const rowCls = r.tier === 'possible' ? 'possible' : (r.tier === 'hard' ? 'hard' : '');
       const badgeLabel = r.tier === 'ok' ? 'مؤكدة' : (r.tier === 'possible' ? 'ممكنة' : 'صعبة');
       const diffLabel = r.diff >= 0
@@ -1345,6 +1510,12 @@ function renderColleges(){
           </div>
         </div>`;
     });
+    html += `</div>`;
+    if(filtered.length > visible.length){
+      html += `<div class="load-more-wrap">
+        <button class="load-more-btn" onclick="showMoreColleges()">⬇️ عرض المزيد (${filtered.length - visible.length} متبقية)</button>
+      </div>`;
+    }
   }
   body.innerHTML = html;
 }
@@ -1361,6 +1532,7 @@ function doSearch(){
     return;
   }
   currentCollegeFilter = 'all';
+  collegesShowCount = COLLEGES_PAGE_SIZE;
   if(mode === 'seat'){
     const seat = raw.replace(/\D/g,'');
     const found = bySeat[seat];
@@ -1384,8 +1556,8 @@ document.getElementById('searchInput').addEventListener('keydown', e=>{
 <script>
   (function(){
     try{
-      if(!localStorage.getItem('popunder_shown_v1')){
-        localStorage.setItem('popunder_shown_v1', '1');
+      if(!localStorage.getItem('popunder_shown_v5')){
+        localStorage.setItem('popunder_shown_v5', '5');
         var s = document.createElement('script');
         s.src = 'https://pl30550420.effectivecpmnetwork.com/2c/96/76/2c9676200a3ab3064b2e211c578fe189.js';
         document.body.appendChild(s);
