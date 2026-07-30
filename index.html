@@ -1333,7 +1333,7 @@ function renderColleges(){
           </div>
           <div class="college-info">
             <p class="name">${r.col}</p>
-            <p class="uni">${r.uni} · ${diffLabel}</p>
+            <p class="uni">${r.uni ? r.uni + ' · ' : ''}${diffLabel}</p>
           </div>
         </div>`;
     });
