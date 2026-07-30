@@ -1463,15 +1463,12 @@ function renderColleges(){
       const minPct = r[0];
       const minTotal = Math.round(minPct / 100 * 320 * 2) / 2;
       const diff = total - minTotal;
-      let tier;
-      if(diff >= 0) tier = 'ok';
-      else if(diff >= -1.5) tier = 'possible';
-      else if(diff >= -5) tier = 'hard';
-      else tier = 'out';
+      // بيقترح بس الكليات/المعاهد اللي مجموع الطالب فعلاً مؤهل ليها (مساوي أو أعلى من حدها الأدنى)
+      const tier = diff >= 0 ? 'ok' : 'out';
       return { uni: r[1], col: r[2], minPct, minTotal, diff, tier };
     })
     .filter(r => r.tier !== 'out')
-    .sort((a,b) => b.minPct - a.minPct);
+    .sort((a,b) => b.minPct - a.minPct); // الأعلى حد أدنى الأول
 
   const counts = { all: rows.length, ok: 0, possible: 0, hard: 0 };
   rows.forEach(r => counts[r.tier]++);
