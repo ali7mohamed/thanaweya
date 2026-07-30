@@ -254,6 +254,50 @@ ad-slot ومعرف id مميز (زي ad-slot-01 ، ad-slot-02 ... إلخ).
     .status-pill{align-self:flex-start;}
   }
   :focus-visible{outline:2.5px solid var(--green-bright); outline-offset:2px;}
+
+/* ===== detailed result card (new) ===== */
+.rd-card{background:var(--white); border:1px solid var(--line); border-radius:16px; padding:22px; margin-bottom:16px; box-shadow:0 10px 30px -18px rgba(11,77,54,.35);}
+.rd-verified{display:inline-flex; align-items:center; gap:6px; background:#e5f5ec; color:var(--green-deep); font-family:'Cairo'; font-weight:800; font-size:12.5px; padding:5px 14px; border-radius:999px; margin-bottom:14px;}
+.rd-name{font-family:'Cairo'; font-weight:900; font-size:clamp(20px,4vw,28px); margin:0 0 4px;}
+.rd-seat{font-size:13.5px; color:#7a705a; margin:0 0 18px;}
+.rd-stats{display:grid; grid-template-columns:repeat(3,1fr); gap:12px;}
+.rd-stat-box{background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:16px 10px; text-align:center;}
+.rd-stat-box .lbl{font-size:12.5px; color:#8a7a5d; margin-bottom:6px;}
+.rd-stat-box .val{font-family:'Cairo'; font-weight:900; font-size:20px; color:var(--green-deep);}
+.rd-stat-box.fail .val{color:var(--red);}
+.rd-stat-box.round2 .val{color:#8a6414;}
+.rd-stat-box .sub{font-size:12px; color:#8a7a5d; margin-top:2px;}
+@media (max-width:560px){ .rd-stats{grid-template-columns:1fr;} }
+
+.rd-section{background:var(--white); border:1px solid var(--line); border-radius:16px; padding:22px; margin-bottom:16px;}
+.rd-section h3{margin:0 0 16px; font-size:16.5px; display:flex; align-items:center; gap:8px;}
+.rd-rank-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:12px;}
+.rd-rank-box{background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:14px 8px; text-align:center;}
+.rd-rank-box .lbl{font-size:11.5px; color:#8a7a5d; margin-bottom:6px;}
+.rd-rank-box .val{font-family:'Cairo'; font-weight:800; font-size:16px; color:var(--green-deep);}
+@media (max-width:700px){ .rd-rank-grid{grid-template-columns:repeat(2,1fr);} }
+
+.rd-note{font-size:12px; color:#8a7a5d; margin-top:12px; line-height:1.7;}
+
+/* colleges */
+.rd-section-select{display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:16px;}
+.rd-section-select select{padding:10px 14px; border-radius:10px; border:1.5px solid var(--line); font-family:'Tajawal'; font-size:14px; background:var(--paper); color:var(--ink);}
+.rd-filter-tabs{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px;}
+.rd-filter-tab{padding:7px 14px; border-radius:999px; border:1.5px solid var(--line); background:var(--paper); font-family:'Cairo'; font-weight:700; font-size:12.5px; cursor:pointer; color:var(--ink);}
+.rd-filter-tab.active{background:var(--green); color:#fff; border-color:var(--green);}
+.college-row{display:flex; justify-content:space-between; align-items:center; gap:12px; padding:14px 16px; border:1px solid var(--line); border-radius:12px; margin-bottom:10px; flex-wrap:wrap; border-inline-start:5px solid var(--green);}
+.college-row.possible{border-inline-start-color:var(--gold);}
+.college-row.hard{border-inline-start-color:var(--red);}
+.college-badge{padding:5px 12px; border-radius:999px; font-family:'Cairo'; font-weight:800; font-size:11.5px; background:#e5f5ec; color:var(--green-deep); white-space:nowrap;}
+.college-row.possible .college-badge{background:#fbf0da; color:#8a6414;}
+.college-row.hard .college-badge{background:#f8e6e4; color:var(--red);}
+.college-mid{display:flex; flex-direction:column; align-items:center; gap:2px; min-width:70px;}
+.college-mid .pct{font-family:'Cairo'; font-weight:800; font-size:15px; color:var(--green-deep);}
+.college-mid .diff{font-size:11px; color:#8a7a5d;}
+.college-info{flex:1; min-width:180px;}
+.college-info .name{font-family:'Cairo'; font-weight:800; font-size:14.5px; margin:0 0 2px;}
+.college-info .uni{font-size:12.5px; color:#7a705a;}
+.rd-back-btn{display:inline-block; margin-top:14px; padding:10px 22px; border-radius:10px; background:var(--green); color:#fff; font-family:'Cairo'; font-weight:700; font-size:14px; border:none; cursor:pointer;}
 </style>
 </head>
 <body>
@@ -334,8 +378,10 @@ ad-slot ومعرف id مميز (زي ad-slot-01 ، ad-slot-02 ... إلخ).
       <div class="hint" id="hintText">اكتب رقم الجلوس كاملاً واضغط "استعلام"، أو Enter.</div>
     </div>
 
-    <!-- AD SLOT 06 : تم حذفه، كان إعلان Native Banner ملاصق لزرار الاستعلام وبيسبب تحويل المستخدم برا الموقع -->
-    <div class="ad-slot ad-native" id="ad-slot-06" data-label="إعلان مدمج" style="display:none;"></div>
+    <div class="ad-slot ad-native" id="ad-slot-06" data-label="إعلان مدمج">
+      <script async="async" data-cfasync="false" src="https://pl30550419.effectivecpmnetwork.com/df1c114d60ccf6d85c05cd93fba321a2/invoke.js"></script>
+      <div id="container-df1c114d60ccf6d85c05cd93fba321a2"></div>
+    </div>
 
     <div class="results-wrap" id="resultsWrap">
       <div class="msg-box">
@@ -402,557 +448,557 @@ ad-slot ومعرف id مميز (زي ad-slot-01 ، ad-slot-02 ... إلخ).
   <h4>— إعلانات —</h4>
   <div class="ad-grid">
     <div class="ad-slot ad-grid-item" id="ad-slot-12" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-13" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-14" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e9d0e8e760df2ae6ecada0cf23296c33', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e9d0e8e760df2ae6ecada0cf23296c33/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-15" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '83cb32b706604d2b9d195baa9790335f', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/83cb32b706604d2b9d195baa9790335f/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-16" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-17" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e9d0e8e760df2ae6ecada0cf23296c33', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e9d0e8e760df2ae6ecada0cf23296c33/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-18" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '83cb32b706604d2b9d195baa9790335f', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/83cb32b706604d2b9d195baa9790335f/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-19" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '73dbf55d9cb6afd107dd85ae3688e63b', 'format' : 'iframe', 'height' : 300, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/73dbf55d9cb6afd107dd85ae3688e63b/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-20" data-label="إعلان"><script>
 atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
 </script>
 <script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-21" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e380d76fe3ce6ca088ab27fc9b0c9b25', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e380d76fe3ce6ca088ab27fc9b0c9b25/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-22" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-23" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-24" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e9d0e8e760df2ae6ecada0cf23296c33', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e9d0e8e760df2ae6ecada0cf23296c33/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-26" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '83cb32b706604d2b9d195baa9790335f', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/83cb32b706604d2b9d195baa9790335f/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-27" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-28" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e9d0e8e760df2ae6ecada0cf23296c33', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e9d0e8e760df2ae6ecada0cf23296c33/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-29" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '83cb32b706604d2b9d195baa9790335f', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/83cb32b706604d2b9d195baa9790335f/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-30" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '73dbf55d9cb6afd107dd85ae3688e63b', 'format' : 'iframe', 'height' : 300, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/73dbf55d9cb6afd107dd85ae3688e63b/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-31" data-label="إعلان"><script>
 atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
 </script>
 <script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-32" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e380d76fe3ce6ca088ab27fc9b0c9b25', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e380d76fe3ce6ca088ab27fc9b0c9b25/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-33" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-34" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-35" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e9d0e8e760df2ae6ecada0cf23296c33', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e9d0e8e760df2ae6ecada0cf23296c33/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-36" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '83cb32b706604d2b9d195baa9790335f', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/83cb32b706604d2b9d195baa9790335f/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-37" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-38" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e9d0e8e760df2ae6ecada0cf23296c33', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e9d0e8e760df2ae6ecada0cf23296c33/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-39" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '83cb32b706604d2b9d195baa9790335f', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/83cb32b706604d2b9d195baa9790335f/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-40" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '73dbf55d9cb6afd107dd85ae3688e63b', 'format' : 'iframe', 'height' : 300, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/73dbf55d9cb6afd107dd85ae3688e63b/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-41" data-label="إعلان"><script>
 atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
 </script>
 <script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-42" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e380d76fe3ce6ca088ab27fc9b0c9b25', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e380d76fe3ce6ca088ab27fc9b0c9b25/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-43" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-44" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-45" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e9d0e8e760df2ae6ecada0cf23296c33', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e9d0e8e760df2ae6ecada0cf23296c33/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-46" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '83cb32b706604d2b9d195baa9790335f', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/83cb32b706604d2b9d195baa9790335f/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-47" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-48" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e9d0e8e760df2ae6ecada0cf23296c33', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e9d0e8e760df2ae6ecada0cf23296c33/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-49" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '83cb32b706604d2b9d195baa9790335f', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/83cb32b706604d2b9d195baa9790335f/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-50" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '73dbf55d9cb6afd107dd85ae3688e63b', 'format' : 'iframe', 'height' : 300, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/73dbf55d9cb6afd107dd85ae3688e63b/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-51" data-label="إعلان"><script>
 atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
 </script>
 <script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-52" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e380d76fe3ce6ca088ab27fc9b0c9b25', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e380d76fe3ce6ca088ab27fc9b0c9b25/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-53" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-54" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-55" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e9d0e8e760df2ae6ecada0cf23296c33', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e9d0e8e760df2ae6ecada0cf23296c33/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-56" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '83cb32b706604d2b9d195baa9790335f', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/83cb32b706604d2b9d195baa9790335f/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-57" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-58" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e9d0e8e760df2ae6ecada0cf23296c33', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e9d0e8e760df2ae6ecada0cf23296c33/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-59" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '83cb32b706604d2b9d195baa9790335f', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/83cb32b706604d2b9d195baa9790335f/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-60" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '73dbf55d9cb6afd107dd85ae3688e63b', 'format' : 'iframe', 'height' : 300, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/73dbf55d9cb6afd107dd85ae3688e63b/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-61" data-label="إعلان"><script>
 atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
 </script>
 <script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-62" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e380d76fe3ce6ca088ab27fc9b0c9b25', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e380d76fe3ce6ca088ab27fc9b0c9b25/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-63" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-64" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-65" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e9d0e8e760df2ae6ecada0cf23296c33', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e9d0e8e760df2ae6ecada0cf23296c33/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-66" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '83cb32b706604d2b9d195baa9790335f', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/83cb32b706604d2b9d195baa9790335f/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-67" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-68" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e9d0e8e760df2ae6ecada0cf23296c33', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e9d0e8e760df2ae6ecada0cf23296c33/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-69" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '83cb32b706604d2b9d195baa9790335f', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/83cb32b706604d2b9d195baa9790335f/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-70" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '73dbf55d9cb6afd107dd85ae3688e63b', 'format' : 'iframe', 'height' : 300, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/73dbf55d9cb6afd107dd85ae3688e63b/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-71" data-label="إعلان"><script>
 atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
 </script>
 <script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-72" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e380d76fe3ce6ca088ab27fc9b0c9b25', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e380d76fe3ce6ca088ab27fc9b0c9b25/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-73" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-74" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-75" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e9d0e8e760df2ae6ecada0cf23296c33', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e9d0e8e760df2ae6ecada0cf23296c33/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-76" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '83cb32b706604d2b9d195baa9790335f', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/83cb32b706604d2b9d195baa9790335f/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-77" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-78" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e9d0e8e760df2ae6ecada0cf23296c33', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e9d0e8e760df2ae6ecada0cf23296c33/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-79" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '83cb32b706604d2b9d195baa9790335f', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/83cb32b706604d2b9d195baa9790335f/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-80" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '73dbf55d9cb6afd107dd85ae3688e63b', 'format' : 'iframe', 'height' : 300, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/73dbf55d9cb6afd107dd85ae3688e63b/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-81" data-label="إعلان"><script>
 atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
 </script>
 <script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-82" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e380d76fe3ce6ca088ab27fc9b0c9b25', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e380d76fe3ce6ca088ab27fc9b0c9b25/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-83" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-84" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-85" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e9d0e8e760df2ae6ecada0cf23296c33', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e9d0e8e760df2ae6ecada0cf23296c33/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-86" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '83cb32b706604d2b9d195baa9790335f', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/83cb32b706604d2b9d195baa9790335f/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-87" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-88" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e9d0e8e760df2ae6ecada0cf23296c33', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e9d0e8e760df2ae6ecada0cf23296c33/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-89" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '83cb32b706604d2b9d195baa9790335f', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/83cb32b706604d2b9d195baa9790335f/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-90" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '73dbf55d9cb6afd107dd85ae3688e63b', 'format' : 'iframe', 'height' : 300, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/73dbf55d9cb6afd107dd85ae3688e63b/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-91" data-label="إعلان"><script>
 atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
 </script>
 <script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-92" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e380d76fe3ce6ca088ab27fc9b0c9b25', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e380d76fe3ce6ca088ab27fc9b0c9b25/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-93" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-94" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-95" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e9d0e8e760df2ae6ecada0cf23296c33', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e9d0e8e760df2ae6ecada0cf23296c33/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-96" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '83cb32b706604d2b9d195baa9790335f', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/83cb32b706604d2b9d195baa9790335f/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-97" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-98" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e9d0e8e760df2ae6ecada0cf23296c33', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e9d0e8e760df2ae6ecada0cf23296c33/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-99" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '83cb32b706604d2b9d195baa9790335f', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/83cb32b706604d2b9d195baa9790335f/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-100" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '73dbf55d9cb6afd107dd85ae3688e63b', 'format' : 'iframe', 'height' : 300, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/73dbf55d9cb6afd107dd85ae3688e63b/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-101" data-label="إعلان"><script>
 atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
 </script>
 <script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-102" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e380d76fe3ce6ca088ab27fc9b0c9b25', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e380d76fe3ce6ca088ab27fc9b0c9b25/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-103" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-104" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-105" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e9d0e8e760df2ae6ecada0cf23296c33', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e9d0e8e760df2ae6ecada0cf23296c33/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-106" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '83cb32b706604d2b9d195baa9790335f', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/83cb32b706604d2b9d195baa9790335f/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-107" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-108" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e9d0e8e760df2ae6ecada0cf23296c33', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e9d0e8e760df2ae6ecada0cf23296c33/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-109" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '83cb32b706604d2b9d195baa9790335f', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/83cb32b706604d2b9d195baa9790335f/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-110" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '73dbf55d9cb6afd107dd85ae3688e63b', 'format' : 'iframe', 'height' : 300, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/73dbf55d9cb6afd107dd85ae3688e63b/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-111" data-label="إعلان"><script>
 atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
 </script>
 <script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-112" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e380d76fe3ce6ca088ab27fc9b0c9b25', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e380d76fe3ce6ca088ab27fc9b0c9b25/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-113" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-114" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-115" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e9d0e8e760df2ae6ecada0cf23296c33', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e9d0e8e760df2ae6ecada0cf23296c33/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-116" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '83cb32b706604d2b9d195baa9790335f', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/83cb32b706604d2b9d195baa9790335f/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-117" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-118" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e9d0e8e760df2ae6ecada0cf23296c33', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e9d0e8e760df2ae6ecada0cf23296c33/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-119" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '83cb32b706604d2b9d195baa9790335f', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/83cb32b706604d2b9d195baa9790335f/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-120" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '73dbf55d9cb6afd107dd85ae3688e63b', 'format' : 'iframe', 'height' : 300, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/73dbf55d9cb6afd107dd85ae3688e63b/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-121" data-label="إعلان"><script>
 atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
 </script>
 <script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-122" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e380d76fe3ce6ca088ab27fc9b0c9b25', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e380d76fe3ce6ca088ab27fc9b0c9b25/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-123" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-124" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-125" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e9d0e8e760df2ae6ecada0cf23296c33', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e9d0e8e760df2ae6ecada0cf23296c33/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-126" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '83cb32b706604d2b9d195baa9790335f', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/83cb32b706604d2b9d195baa9790335f/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-127" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-128" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e9d0e8e760df2ae6ecada0cf23296c33', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e9d0e8e760df2ae6ecada0cf23296c33/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-129" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '83cb32b706604d2b9d195baa9790335f', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/83cb32b706604d2b9d195baa9790335f/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-130" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '73dbf55d9cb6afd107dd85ae3688e63b', 'format' : 'iframe', 'height' : 300, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/73dbf55d9cb6afd107dd85ae3688e63b/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-131" data-label="إعلان"><script>
 atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
 </script>
 <script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-132" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e380d76fe3ce6ca088ab27fc9b0c9b25', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e380d76fe3ce6ca088ab27fc9b0c9b25/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-133" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-134" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-135" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e9d0e8e760df2ae6ecada0cf23296c33', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e9d0e8e760df2ae6ecada0cf23296c33/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-136" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '83cb32b706604d2b9d195baa9790335f', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/83cb32b706604d2b9d195baa9790335f/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-137" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-138" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e9d0e8e760df2ae6ecada0cf23296c33', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e9d0e8e760df2ae6ecada0cf23296c33/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-139" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '83cb32b706604d2b9d195baa9790335f', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/83cb32b706604d2b9d195baa9790335f/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-140" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '73dbf55d9cb6afd107dd85ae3688e63b', 'format' : 'iframe', 'height' : 300, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/73dbf55d9cb6afd107dd85ae3688e63b/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-141" data-label="إعلان"><script>
 atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
 </script>
 <script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-142" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e380d76fe3ce6ca088ab27fc9b0c9b25', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e380d76fe3ce6ca088ab27fc9b0c9b25/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-143" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-144" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-145" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e9d0e8e760df2ae6ecada0cf23296c33', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e9d0e8e760df2ae6ecada0cf23296c33/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-146" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '83cb32b706604d2b9d195baa9790335f', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/83cb32b706604d2b9d195baa9790335f/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-147" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '96c0f23217bd74d064ff71c22a67bbda', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/96c0f23217bd74d064ff71c22a67bbda/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-148" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : 'e9d0e8e760df2ae6ecada0cf23296c33', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/e9d0e8e760df2ae6ecada0cf23296c33/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-149" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '83cb32b706604d2b9d195baa9790335f', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/83cb32b706604d2b9d195baa9790335f/invoke.js"></script></div>
     <div class="ad-slot ad-grid-item" id="ad-slot-150" data-label="إعلان"><script>
-atOptions = { 'key' : '9a8d5fd986b7b538bfdb5a6b89d1474e', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
+atOptions = { 'key' : '73dbf55d9cb6afd107dd85ae3688e63b', 'format' : 'iframe', 'height' : 300, 'width' : 160, 'params' : {} };
 </script>
-<script src="https://www.highperformanceformat.com/9a8d5fd986b7b538bfdb5a6b89d1474e/invoke.js"></script></div>
+<script src="https://www.highperformanceformat.com/73dbf55d9cb6afd107dd85ae3688e63b/invoke.js"></script></div>
   </div>
 </div>
 
@@ -987,6 +1033,47 @@ let STUDENTS = [];
 let dataReady = false;
 const bySeat = {};
 
+/* هيستوجرام المجاميع لحساب الترتيب على الجمهورية بسرعة (بدون فرز 900 ألف صف عند كل بحث) */
+const MAX_TOTAL = 320;
+const STEP = 0.5;
+const BUCKETS = Math.round(MAX_TOTAL / STEP) + 1; // 0 .. 320 كل 0.5
+let freq = new Array(BUCKETS).fill(0);
+let cumAbove = new Array(BUCKETS).fill(0); // عدد الطلاب اللي مجموعهم أعلى من قيمة الباكت ده
+let totalSum = 0;
+
+function totalToBucket(t){
+  let b = Math.round(t / STEP);
+  if(b < 0) b = 0;
+  if(b > BUCKETS - 1) b = BUCKETS - 1;
+  return b;
+}
+
+function buildRankHistogram(){
+  freq = new Array(BUCKETS).fill(0);
+  totalSum = 0;
+  for(const s of STUDENTS){
+    const t = typeof s.total === 'number' ? s.total : parseFloat(s.total) || 0;
+    freq[totalToBucket(t)]++;
+    totalSum += t;
+  }
+  let running = 0;
+  cumAbove = new Array(BUCKETS).fill(0);
+  for(let i = BUCKETS - 1; i >= 0; i--){
+    cumAbove[i] = running; // عدد الطلاب في الباكتس الأعلى (استرايكتلي أعلى)
+    running += freq[i];
+  }
+}
+
+function computeRank(total){
+  const b = totalToBucket(total);
+  const rank = cumAbove[b] + 1; // ترتيبه = عدد الأعلى منه + 1
+  const totalCount = STUDENTS.length;
+  const beatenPct = totalCount > 0 ? ((totalCount - rank) / totalCount) * 100 : 0;
+  const avg = totalCount > 0 ? totalSum / totalCount : 0;
+  const level = total >= avg ? 'أعلى من المتوسط' : 'أقل من المتوسط';
+  return { rank, totalCount, beatenPct, avg, level };
+}
+
 async function loadStudents(){
   document.getElementById('totalCount').textContent = 'جارٍ التحميل...';
   try{
@@ -1002,6 +1089,7 @@ async function loadStudents(){
     }));
     STUDENTS = parts.flat();
     STUDENTS.forEach(s => { bySeat[s.seat] = s; });
+    buildRankHistogram();
     dataReady = true;
     document.getElementById('totalCount').textContent = STUDENTS.length.toLocaleString('ar-EG');
   }catch(err){
@@ -1010,6 +1098,24 @@ async function loadStudents(){
   }
 }
 loadStudents();
+
+/* =========================================================
+   بيانات تنسيق الكليات (تقديرية - لأغراض التوجيه فقط، مش بيانات رسمية)
+   ========================================================= */
+let COORDINATION = []; // [minPercentage, university, college, section, governorateSlug]
+let coordReady = false;
+async function loadCoordination(){
+  try{
+    const r = await fetch('data/coordination.json');
+    COORDINATION = await r.json();
+    coordReady = true;
+  }catch(err){
+    coordReady = false;
+  }
+}
+loadCoordination();
+
+const SECTION_LABELS = { science: 'علمي علوم', math: 'علمي رياضة', literary: 'أدبي' };
 
 let mode = 'seat';
 function setMode(m){
@@ -1050,19 +1156,21 @@ function statusClass(status){
   return '';
 }
 
+/* ---------- نتائج بحث متعددة (بالاسم) — عرض مختصر قابل للنقر ---------- */
 function renderResults(list, queryWasSeat){
   const wrap = document.getElementById('resultsWrap');
   if(list.length === 0){
     wrap.innerHTML = `<div class="msg-box"><b>لا توجد نتيجة مطابقة</b>تأكد من رقم الجلوس أو من كتابة الاسم بشكل صحيح</div>`;
     return;
   }
-  let html = '';
-  if(!queryWasSeat){
-    html += `<p class="results-count">تم العثور على ${list.length.toLocaleString('ar-EG')} نتيجة مطابقة</p>`;
+  if(queryWasSeat && list.length === 1){
+    renderDetailedResult(list[0]);
+    return;
   }
-  list.slice(0, 60).forEach((s, idx) => {
+  let html = `<p class="results-count">تم العثور على ${list.length.toLocaleString('ar-EG')} نتيجة مطابقة — اضغط على أي نتيجة لعرض التفاصيل الكاملة</p>`;
+  list.slice(0, 60).forEach((s) => {
     html += `
-      <div class="result-card ${statusClass(s.status)}">
+      <div class="result-card ${statusClass(s.status)}" style="cursor:pointer;" onclick="showDetailBySeat('${s.seat}')">
         <div>
           <p class="r-name">${s.name}</p>
           <p class="r-seat">رقم الجلوس: ${s.seat}</p>
@@ -1080,6 +1188,159 @@ function renderResults(list, queryWasSeat){
   wrap.innerHTML = html;
 }
 
+function showDetailBySeat(seat){
+  const s = bySeat[seat];
+  if(s) renderDetailedResult(s);
+  window.scrollTo({top: document.getElementById('resultsWrap').offsetTop - 90, behavior:'smooth'});
+}
+
+/* ---------- البطاقة التفصيلية (نتيجة واحدة): الحالة/النسبة/المجموع + الترتيب + الكليات المتوقعة ---------- */
+let currentStudent = null;
+let currentSection = 'science';
+let currentCollegeFilter = 'all';
+
+function renderDetailedResult(s){
+  currentStudent = s;
+  const cls = statusClass(s.status);
+  const rankInfo = dataReady ? computeRank(s.total) : null;
+
+  let html = `
+    <div class="rd-card">
+      <span class="rd-verified">✅ بيانات موثقة</span>
+      <h2 class="rd-name">${s.name}</h2>
+      <p class="rd-seat">رقم الجلوس: ${s.seat}</p>
+      <div class="rd-stats">
+        <div class="rd-stat-box ${cls}">
+          <div class="lbl">الحالة</div>
+          <div class="val">${s.status}</div>
+        </div>
+        <div class="rd-stat-box">
+          <div class="lbl">النسبة المئوية</div>
+          <div class="val">${s.pct.toFixed(2)}%</div>
+        </div>
+        <div class="rd-stat-box">
+          <div class="lbl">المجموع</div>
+          <div class="val">${s.total} <span style="font-size:13px;color:#8a7a5d;">/ 320</span></div>
+        </div>
+      </div>
+    </div>`;
+
+  html += `
+    <div class="rd-section">
+      <h3>🏆 الترتيب على الجمهورية</h3>
+      ${rankInfo ? `
+      <div class="rd-rank-grid">
+        <div class="rd-rank-box"><div class="lbl">المستوى</div><div class="val">${rankInfo.level}</div></div>
+        <div class="rd-rank-box"><div class="lbl">نسبة التفوق</div><div class="val">${rankInfo.beatenPct.toFixed(2)}%</div></div>
+        <div class="rd-rank-box"><div class="lbl">من إجمالي</div><div class="val">${rankInfo.totalCount.toLocaleString('ar-EG')} طالب</div></div>
+        <div class="rd-rank-box"><div class="lbl">الترتيب</div><div class="val">${rankInfo.rank.toLocaleString('ar-EG')}</div></div>
+      </div>
+      <p class="rd-note">"نسبة التفوق" = نسبة الطلاب اللي مجموعك أعلى منهم من إجمالي الطلاب المسجَّلين في الملف الحالي. "المستوى" مقارنة بمتوسط مجاميع كل الطلاب.</p>
+      ` : `<p class="rd-note">جارٍ حساب الترتيب...</p>`}
+    </div>`;
+
+  html += `
+    <div class="rd-section" id="collegesSection">
+      <h3>🎓 الكليات المتوقعة</h3>
+      <div class="rd-section-select">
+        <label style="font-size:13.5px;color:#4c4636;">اختر شعبتك:</label>
+        <select id="sectionSelect" onchange="onSectionChange(this.value)">
+          <option value="science">علمي علوم</option>
+          <option value="math">علمي رياضة</option>
+          <option value="literary">أدبي</option>
+        </select>
+      </div>
+      <div id="collegesBody"></div>
+      <p class="rd-note">⚠️ الأرقام دي تقديرية استرشادية مبنية على تنسيق سنة سابقة، مش بيانات رسمية لهذا العام، والتنسيق الفعلي بيتحدد من مكاتب تنسيق الجامعات بعد ظهور النتيجة بأيام. راجع الموقع الرسمي قبل اتخاذ أي قرار.</p>
+    </div>
+    <div style="text-align:center;">
+      <button class="rd-back-btn" onclick="backToSearch()">🔎 بحث عن نتيجة تانية</button>
+    </div>`;
+
+  document.getElementById('resultsWrap').innerHTML = html;
+  document.getElementById('sectionSelect').value = currentSection;
+  renderColleges();
+}
+
+function onSectionChange(sec){
+  currentSection = sec;
+  renderColleges();
+}
+
+function setCollegeFilter(f){
+  currentCollegeFilter = f;
+  renderColleges();
+}
+
+function backToSearch(){
+  currentStudent = null;
+  document.getElementById('searchInput').value = '';
+  document.getElementById('resultsWrap').innerHTML = `<div class="msg-box"><b>ابدأ الاستعلام</b>النتائج هتظهر هنا فور كتابة رقم الجلوس أو الاسم</div>`;
+  document.getElementById('searchInput').focus();
+}
+
+function renderColleges(){
+  const body = document.getElementById('collegesBody');
+  if(!body || !currentStudent) return;
+  if(!coordReady){
+    body.innerHTML = `<p class="rd-note">تعذر تحميل بيانات التنسيق التقديرية حالياً.</p>`;
+    return;
+  }
+  const total = currentStudent.total;
+  const rows = COORDINATION
+    .filter(r => r[3] === currentSection)
+    .map(r => {
+      const minPct = r[0];
+      const minTotal = Math.round(minPct / 100 * 320 * 2) / 2;
+      const diff = total - minTotal;
+      let tier;
+      if(diff >= 0) tier = 'ok';
+      else if(diff >= -1.5) tier = 'possible';
+      else if(diff >= -5) tier = 'hard';
+      else tier = 'out';
+      return { uni: r[1], col: r[2], minPct, minTotal, diff, tier };
+    })
+    .filter(r => r.tier !== 'out')
+    .sort((a,b) => b.minPct - a.minPct);
+
+  const counts = { all: rows.length, ok: 0, possible: 0, hard: 0 };
+  rows.forEach(r => counts[r.tier]++);
+
+  const filtered = currentCollegeFilter === 'all' ? rows : rows.filter(r => r.tier === currentCollegeFilter);
+
+  let html = `<div class="rd-filter-tabs">
+    <button class="rd-filter-tab ${currentCollegeFilter==='hard'?'active':''}" onclick="setCollegeFilter('hard')">صعبة ${counts.hard}</button>
+    <button class="rd-filter-tab ${currentCollegeFilter==='possible'?'active':''}" onclick="setCollegeFilter('possible')">ممكنة ${counts.possible}</button>
+    <button class="rd-filter-tab ${currentCollegeFilter==='ok'?'active':''}" onclick="setCollegeFilter('ok')">مؤكدة ${counts.ok}</button>
+    <button class="rd-filter-tab ${currentCollegeFilter==='all'?'active':''}" onclick="setCollegeFilter('all')">الكل ${counts.all}</button>
+  </div>`;
+
+  if(filtered.length === 0){
+    html += `<div class="msg-box"><b>لا توجد كليات ضمن هذا التصنيف</b>جرّب تصنيف تاني أو غيّر الشعبة</div>`;
+  } else {
+    filtered.slice(0, 60).forEach(r => {
+      const rowCls = r.tier === 'possible' ? 'possible' : (r.tier === 'hard' ? 'hard' : '');
+      const badgeLabel = r.tier === 'ok' ? 'مؤكدة' : (r.tier === 'possible' ? 'ممكنة' : 'صعبة');
+      const diffLabel = r.diff >= 0
+        ? `مجموعك أعلى بفارق ${r.diff.toFixed(1)} درجة`
+        : `ينقصك ${Math.abs(r.diff).toFixed(1)} درجة`;
+      html += `
+        <div class="college-row ${rowCls}">
+          <span class="college-badge">${badgeLabel}</span>
+          <div class="college-mid">
+            <div class="pct">${r.minPct}%</div>
+            <div class="diff">الحد الأدنى</div>
+          </div>
+          <div class="college-info">
+            <p class="name">${r.col}</p>
+            <p class="uni">${r.uni} · ${diffLabel}</p>
+          </div>
+        </div>`;
+    });
+  }
+  body.innerHTML = html;
+}
+
 function doSearch(){
   const raw = document.getElementById('searchInput').value.trim();
   const wrap = document.getElementById('resultsWrap');
@@ -1091,6 +1352,7 @@ function doSearch(){
     wrap.innerHTML = `<div class="msg-box"><b>من فضلك اكتب قيمة للبحث</b></div>`;
     return;
   }
+  currentCollegeFilter = 'all';
   if(mode === 'seat'){
     const seat = raw.replace(/\D/g,'');
     const found = bySeat[seat];
@@ -1123,6 +1385,16 @@ document.getElementById('searchInput').addEventListener('keydown', e=>{
     }catch(e){ /* لو الـ localStorage مش متاح، منعرضش البوب أندر خالص بدل ما يتكرر */ }
   })();
 </script>
+
+<!-- Social Bar -->
+<script src="https://pl30550421.effectivecpmnetwork.com/be/be/f4/bebef430457a5f20cd12b2c5fc3a7f20.js"></script>
+
+<!-- Smartlink -->
+<div style="text-align:center; margin:16px 0;">
+  <a href="https://www.effectivecpmnetwork.com/hz76ijaa?key=6878d8928f537e97237198ee4c3ce915" target="_blank" rel="noopener" style="display:inline-block; padding:10px 20px; border-radius:8px; background:rgba(255,255,255,.08); color:inherit; text-decoration:none; font-family:'Tajawal';">
+    إعلان
+  </a>
+</div>
 
 </body>
 </html>
